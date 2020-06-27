@@ -10,13 +10,10 @@
     src: url("../fonts/rocket-wildness-font/Rocketwildness-7BB8R.ttf");
 }
 
-body {
-     background-image: url(../images/black-brick.jpg);
-     background-size: cover;
-}
-
 header {
      height: 977px;
+     background-image: url(../images/black-brick.jpg);
+     background-size: cover;
 }
 
 .header-content-container {
@@ -32,18 +29,53 @@ header {
     margin: 30px 0;
 }
 
-h1 {
+.name-fader {
+    position: fixed;
+    top: 375px;
+    left: 325px;
+    height: 100px;
+    width: 1200px;
+    background: linear-gradient(to top, rgba(0,0,0,1) 0%,rgba(0,0,0,0) 100%);
+    opacity: 0;
+    z-index: 1;
+    animation: fadeOutName 4s linear 0s;
+}
+.name-fader-extend {
+    position: fixed;
+    top: 475px;
+    left: 325px;
+    height: 100px;
+    width: 1200px;
+    background: #000;
+    overflow: hidden;
+    opacity: 0;
+    z-index: 1;
+    animation: fadeOutName 4s linear 0s;
+}
+
+.h1-name {
+     position: relative;
+     top: 20px;
      font-size: 70px;
      font-family: Rocket;
      letter-spacing: .4em;
 }
 
+.shift1 {
+    animation: name-shift-up1 3s ease-out 0s,name-shift-left1 2s ease-in-out 3s;
+}
+
+.shift2 {
+    animation: name-shift-up2 3s ease-out 0s,name-shift-left2 2s ease-in-out 3s;
+}
+
 p {
      font-size: 25px;
      max-width: 900px;
-     margin: 10px 0;
+     margin: 5px 0;
      font-family: Raleway;
      font-weight: 100;
+     animation: fadeInPara 8.5s ease-in-out 0s;
 }
 
 .right-side {
@@ -53,6 +85,7 @@ p {
     width: 20%;
     justify-content: space-between;
     left: 210px;
+    animation: fadeInArrow 8s ease-in-out 0s;
     transition: left 400ms ease-out 100ms;
 }
 
@@ -141,20 +174,58 @@ nav li span:hover {
      cursor: pointer;
 }
 
+.background-fade {
+    animation: back-fade 6s linear 0s;
+    width:100%;
+    height: 100%;
+    position: absolute;
+    background-color: #000;
+    opacity: 0;
+}
+
+@keyframes back-fade {
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+
 .pulsate1 {
-    -webkit-animation: pulsate1 3s linear 0s;
+    -webkit-animation: pulsate1 3s linear 9.5s;
     -webkit-animation-iteration-count: infinite; 
     opacity: 1.0;
 }
 
 .pulsate2 {
-    -webkit-animation: pulsate2 3s linear 0s;
+    -webkit-animation: pulsate2 3s linear 9.5s;
     -webkit-animation-iteration-count: infinite; 
     opacity: 1.0;
 }
 
 @-webkit-keyframes pulsate1 {
     0% { 
+        opacity: 1.0;
+        transform: translateX(0px) translateY(-18px) rotate(-55deg);
+    }
+    1% { 
+        opacity: 1.0;
+        transform: translateX(0px) translateY(-18px) rotate(-55deg);
+    }
+    2% { 
+        opacity: 1.0;
+        transform: translateX(0px) translateY(-18px) rotate(-55deg);
+    }
+    3% { 
+        opacity: 1.0;
+        transform: translateX(0px) translateY(-18px) rotate(-55deg);
+    }
+    4% { 
         opacity: 1.0;
         transform: translateX(0px) translateY(-18px) rotate(-55deg);
     }
@@ -191,7 +262,7 @@ nav li span:hover {
         transform: translateX(-36px) translateY(-18px) rotate(-55deg);
     }
     45% { 
-        opacity: .65;
+        opacity: .55;
         transform: translateX(-39px) translateY(-18px) rotate(-55deg);
     }
     50% { 
@@ -199,7 +270,7 @@ nav li span:hover {
         transform: translateX(-42px) translateY(-18px) rotate(-55deg);
     }
     55% { 
-        opacity: .50;
+        opacity: .45;
         transform: translateX(-45px) translateY(-18px) rotate(-55deg);
     }
     60% { 
@@ -278,7 +349,7 @@ nav li span:hover {
         transform: translateX(-36px) translateY(18px) rotate(55deg);
     }
     45% { 
-        opacity: .65;
+        opacity: .55;
         transform: translateX(-39px) translateY(18px) rotate(55deg);
     }
     50% { 
@@ -286,7 +357,7 @@ nav li span:hover {
         transform: translateX(-42px) translateY(18px) rotate(55deg);
     }
     55% { 
-        opacity: .50;
+        opacity: .45;
         transform: translateX(-45px) translateY(18px) rotate(55deg);
     }
     60% { 
@@ -324,5 +395,101 @@ nav li span:hover {
     100% { 
         opacity: 0.0;
         transform: translateX(-60px) translateY(18px) rotate(55deg);
+    }
+}
+
+@keyframes name-shift-up1 {
+    0% {
+        top: 160px;
+        left: 400px;
+    }
+    40% {
+        top: 160px;
+        left: 400px;
+    }
+    90% { 
+        top: 30px;
+        left: 400px;
+    }
+    100% {
+        top: 30px;
+        left: 400px;
+    }
+}
+
+@keyframes name-shift-left1 {
+    from {
+        top: 30px;
+        left: 400px;
+    }
+    to {
+        top: 20px;
+        left: 0px;
+    }
+}
+
+@keyframes name-shift-up2 {
+    0% {
+        top: 85px;
+        left: 850px;
+    }
+    40% {
+        top: 85px;
+        left: 850px;
+    }
+    90% {
+        top: -45px;
+        left: 850px;
+    }
+    100% {
+        top: -45px;
+        left: 850px;
+    }
+}
+
+@keyframes name-shift-left2 {
+    from {
+        top: -45px;
+        left: 850px;
+    }
+    to {
+        top: 20px;
+        left: 0px;
+    }
+}
+
+@keyframes fadeOutName {
+    0% {
+        opacity: 1;
+    }
+    80% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0;
+    }
+}
+
+@keyframes fadeInPara {
+    0% {
+        opacity: 0;
+    }
+    75% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeInArrow {
+    0% {
+        opacity: 0;
+    }
+    80% {
+        opacity: 0;
+    }
+    100% {
+        opacity: 1;
     }
 }
